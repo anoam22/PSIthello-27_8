@@ -1,6 +1,7 @@
 #pragma once
 #include "board.hpp"
 #include "disk.hpp"
+#include "player.hpp"
 #include <iostream>
 
 
@@ -8,7 +9,7 @@ class Game
 {
 private:
     Board _board_instance;
-    std::array<Player> _players;
+    std::array<Player, 2> _players;
     Player _current_player;
 
 public:
