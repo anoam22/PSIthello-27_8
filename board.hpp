@@ -4,6 +4,7 @@
 #include "player.hpp"
 #include <iostream>
 #include <array>
+#include <vector>
 
 const int SIZE_BOARD_SIDE = 8;
 

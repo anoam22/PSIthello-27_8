@@ -3,6 +3,7 @@
 #include "disk.hpp"
 #include "player.hpp"
 #include <iostream>
+#include <string>
 
 
 class Game
@@ -16,6 +17,45 @@ public:
     Game(/* args */);
 
     void start_game() const;
+
+    /**
+     * @brief The function inputs a point from the player
+     */
+    std::pair<int,int> input_point(Player player);
+
+    /**
+     * @brief The function checks if the input is valid
+     * 
+     * @param input The input we are gonna check
+     * 
+     * @returns True if the input is valid False if not
+     */
+    bool is_valid_input(const std::string& input);
+
+    /**
+     * @brief The function checks if the move is valid
+     * 
+     * @param point The point we are gonna check
+     * 
+     * @param valid_moves The vector of the current valid
+     *                    moves
+     * 
+     * @returns True if the point is in the vector of
+     *          the valid moves
+     */
+    bool is_valid_move(std::pair<int,int> point, const std::vector<int> &valid_moves);
+
+    /**
+     * @brief The function takes a string and converts it into
+     *        a pair (point).
+     *        Example:
+     *        D3 ------> (3,2)
+     * 
+     * @param input The string we convert
+     * 
+     * @returns The pair (point) we converted into
+     */
+    std::pair<int,int> convert_to_cords(const std::string& input);
 
     void end_game() const;
 
