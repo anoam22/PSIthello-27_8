@@ -12,10 +12,10 @@ Board::Board(std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE> _boa
             this->_board[x][y] = Disk();
         }
     }
-    _board[3][3].set_color(DiskColor:: WHITE);
-    _board[4][4].set_color(DiskColor:: WHITE);
-    _board[4][3].set_color(DiskColor:: BLACK);
-    _board[3][4].set_color(DiskColor:: BLACK);
+     this->_board[3][3].set_color(DiskColor:: WHITE);
+     this->_board[4][4].set_color(DiskColor:: WHITE);
+     this->_board[4][3].set_color(DiskColor:: BLACK);
+     this->_board[3][4].set_color(DiskColor:: BLACK);
 }
 
 std::vector<int> Board::get_valid_points(Player player)
