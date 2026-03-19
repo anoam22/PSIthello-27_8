@@ -66,3 +66,46 @@ bool Game::is_valid_move(std::pair<int, int> point, const std::vector<int> &vali
     }
     return false;
 }
+
+char get_char_by_enum(DiskColor disk_color)
+{
+
+    switch (disk_color)
+    {
+    case DiskColor::BLACK:
+        return 'O';
+    case DiskColor::WHITE:
+        return 'X';
+    case DiskColor::EMPTY:
+        return '-';
+    default:
+        break;
+    }
+}
+
+void Game::print_board()
+{
+    int size = SIZE_BOARD_SIDE;
+    std::vector<int> points = _board_instance.get_valid_points(_current_player);
+    std::pair<int, int> point;
+
+    for (int i = 0; i < size; i++)
+    {
+
+        for (int j = 0; j < size; j++)
+        {
+            point.first = j;
+            point.second = i;
+
+            if (is_valid_move(point, points))
+            {
+                std::cout << "* ";
+            }
+            else
+            {
+                std::cout << get_char_by_enum(_board_instance._board[i][j].get_color()) << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+}

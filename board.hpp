@@ -41,9 +41,9 @@ public:
      */
     bool check_direction(int x, int y, int direction_x, int direction_y, DiskColor player_color, DiskColor adversary_color);
 
-    bool is_valid_move(Player player);
-
     std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE> &get_board() const;
+
+    friend class Game;
 
     ~Board() = default;
 };
