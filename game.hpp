@@ -4,6 +4,7 @@
 #include "player.hpp"
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Game
 {
@@ -66,6 +67,13 @@ public:
      */
     void Game::update_board();
 
+    /**
+     * @brief The function checks a direction, it saves the vector of the disks that needed to be changed
+     */
+    void update_disks_by_direction(int x, int y, int direction_x, int direction_y, DiskColor player_color, DiskColor adversary_color);
+
+    void change_disks(std::vector<std::pair<int,int>> disks_to_change, DiskColor player_color);
+
     void end_game() const;
 
     void switch_player();
@@ -81,3 +89,4 @@ public:
  * @return The functino return the char by the menue
  */
 char get_char_by_enum(DiskColor disk_color);
+
