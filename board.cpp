@@ -1,7 +1,6 @@
 #include "board.hpp"
 #include <iostream>
 
-
 std::vector<int> Board::get_valid_points(Player player)
 {
     std::vector<int> legal_points;
@@ -88,3 +87,4 @@ bool Board::check_direction(int x, int y, int direction_x, int direction_y, Disk
         }
     }
 }
+
