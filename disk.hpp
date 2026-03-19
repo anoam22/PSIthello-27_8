@@ -1,5 +1,7 @@
 #pragma once
 
+#include "disk_color.hpp"
+
 class Disk
 {
 private:
