@@ -8,7 +8,8 @@
  *
  * @brief Represents a player.
  */
-class Player {
+class Player
+{
 private:
     std::string name;
     DiskColor color;
@@ -16,14 +17,16 @@ private:
 public:
     /**
      * @brief Gets the name of the player
-     * 
+     *
      * @returns The player's name
      */
     std::string get_name() const;
 
+    friend class Game;
+
     /**
      * @brief Gets the color of the player
-     * 
+     *
      * @returns The player's color
      */
     DiskColor get_color() const;

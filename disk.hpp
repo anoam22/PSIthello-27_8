@@ -16,4 +16,3 @@ public:
 
     ~Disk() = default;
 };
-
