@@ -79,7 +79,7 @@ char get_char_by_enum(DiskColor disk_color)
     case DiskColor::EMPTY:
         return '-';
     default:
-        break;
+        return '-';
     }
 }
 
