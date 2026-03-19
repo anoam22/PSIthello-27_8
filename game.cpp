@@ -109,3 +109,24 @@ void Game::print_board()
         std::cout << std::endl;
     }
 }
+
+void Game::update_board()
+{
+    std::pair<int, int> input_disk = input_point(_current_player);
+    DiskColor color_adversary;
+    const int size = SIZE_BOARD_SIDE;
+
+    if (_current_player.get_color() == DiskColor::BLACK)
+    {
+        color_adversary = DiskColor::WHITE;
+    }
+    else
+    {
+        color_adversary = DiskColor::BLACK;
+    }
+
+    std::array<int, size> x_directions = {0, 1, 1, 1, 0, -1, -1, -1};
+    std::array<int, size> y_directions = {1, 1, 0, -1, -1, -1, 0, -1};
+
+
+}

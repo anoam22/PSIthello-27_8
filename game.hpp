@@ -61,6 +61,11 @@ public:
      */
     void Game::print_board();
 
+    /**
+     * @brief The functino get the new point, conqure the disks, and update the board
+     */
+    void Game::update_board();
+
     void end_game() const;
 
     void switch_player();
