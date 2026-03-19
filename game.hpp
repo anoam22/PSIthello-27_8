@@ -4,6 +4,7 @@
 #include "player.hpp"
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Game
 {
@@ -59,7 +60,34 @@ public:
     /**
      * @brief The functino prints the board
      */
-    void Game::print_board();
+    void print_board();
+
+    /**
+     * @brief The functino get the new point, conqure the disks, and update the board
+     */
+    void update_board();
+
+    /**
+     * @brief The function checks a direction, it saves the vector of the disks that needed to be changed
+     *
+     * @param x The current x of the checking slot
+     * @param y The current y of the checking slot
+     * @param direction_x The direction to go in the X axis. 0 means none, 1 right -1 left
+     * @param direction_y The direction to go in the y axis. 0 means none, 1 up -1 down
+     * @param player_color The player's disk color
+     * @param adversary_color The adversary's disk color
+     *
+     */
+    void update_disks_by_direction(int x, int y, int direction_x, int direction_y, DiskColor player_color, DiskColor adversary_color);
+
+    /**
+     * @brief The function checks the locations in the vector and set the variables color
+     *
+     * @param disks_to_change Vecotor of locations to change
+     * @param player_color The player color
+     *
+     */
+    void change_disks(std::vector<std::pair<int, int>> disks_to_change, DiskColor player_color);
 
     void end_game() const;
 

@@ -79,7 +79,7 @@ char get_char_by_enum(DiskColor disk_color)
     case DiskColor::EMPTY:
         return '-';
     default:
-        break;
+        return '-';
     }
 }
 
@@ -107,5 +107,95 @@ void Game::print_board()
             }
         }
         std::cout << std::endl;
+    }
+}
+
+void Game::update_board()
+{
+    std::pair<int, int> input_disk = input_point(_current_player);
+    DiskColor color_adversary;
+    DiskColor color_player = _current_player.get_color();
+
+    const int size = SIZE_BOARD_SIDE;
+
+    if (_current_player.get_color() == DiskColor::BLACK)
+    {
+        color_adversary = DiskColor::WHITE;
+    }
+    else
+    {
+        color_adversary = DiskColor::BLACK;
+    }
+
+    std::array<int, size> x_directions = {0, 1, 1, 1, 0, -1, -1, -1};
+    std::array<int, size> y_directions = {1, 1, 0, -1, -1, -1, 0, -1};
+
+    int x_direction = 0;
+    int y_direction = 0;
+
+    int x_input = input_disk.first;
+    int y_input = input_disk.second;
+
+    for (int i = 0; i < size; i++)
+    {
+        x_direction = x_directions[i];
+        y_direction = y_directions[i];
+
+        update_disks_by_direction(x_input, y_input, x_direction, y_direction, color_player, color_adversary);
+    }
+
+    _board_instance.get_board()[y_input][x_input].set_color(color_player);
+}
+
+void Game::update_disks_by_direction(int x, int y, int direction_x, int direction_y, DiskColor player_color, DiskColor adversary_color)
+{
+    bool found_adversary_point = false;
+    std::vector<std::pair<int, int>> disks_to_change;
+    std::pair<int, int> current_point;
+
+    while (true)
+    {
+        x += direction_x;
+        y += direction_y;
+
+        current_point.first = x;
+        current_point.second = y;
+
+        disks_to_change.push_back(current_point);
+
+        if (x < 0 || x > 7 || y < 0 || y > 7)
+        {
+            break;
+        }
+
+        if (_board_instance.get_board()[y][x].get_color() == adversary_color)
+        {
+            found_adversary_point = true;
+        }
+
+        if (_board_instance.get_board()[y][x].get_color() == player_color && !found_adversary_point || _board_instance.get_board()[y][x].get_color() == DiskColor::EMPTY)
+        {
+            break;
+        }
+        else if (_board_instance.get_board()[y][x].get_color() == player_color && found_adversary_point)
+        {
+            change_disks(disks_to_change, player_color);
+            break;
+        }
+    }
+}
+
+void Game::change_disks(std::vector<std::pair<int, int>> disks_to_change, DiskColor player_color)
+{
+
+    int x;
+    int y;
+
+    for (auto pair : disks_to_change)
+    {
+        x = pair.first;
+        y = pair.second;
+
+        _board_instance.get_board()[y][x].set_color(player_color);
     }
 }
