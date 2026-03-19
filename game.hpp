@@ -14,7 +14,7 @@ private:
     Player _current_player;
 
 public:
-    Game(/* args */);
+    Game(Board _board_instance);
 
     void start_game() const;
 
@@ -89,6 +89,8 @@ public:
      */
     void change_disks(std::vector<std::pair<int, int>> disks_to_change, DiskColor player_color);
 
+    void set_board(Board board);
+
     void end_game() const;
 
     void switch_player();
@@ -97,7 +99,7 @@ public:
 
     std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE> get_board() const;
 
-    ~Game();
+    ~Game() = default;
 };
 
 /**

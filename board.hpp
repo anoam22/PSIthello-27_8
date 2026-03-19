@@ -20,7 +20,7 @@ public:
     /**
      * @brief The constructor of board
      */
-    Board(/* args */);
+    Board(std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE> _board);
 
     /**
      * @brief The function returns the locations that are valid to the user to put disks
