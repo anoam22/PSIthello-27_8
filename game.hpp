@@ -30,7 +30,7 @@ public:
      * 
      * @returns True if the input is valid False if not
      */
-    bool is_valid_input(const std::string& input);
+    bool is_valid_input(const std::string& input) const;
 
     /**
      * @brief The function checks if the move is valid
