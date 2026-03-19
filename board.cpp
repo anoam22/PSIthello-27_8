@@ -1,6 +1,23 @@
 #include "board.hpp"
 #include <iostream>
 
+
+Board::Board(std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE> _board)
+    : _board(_board)
+{
+    for (int x = 0; x < _board.size(); x++)
+    {
+        for (int y = 0; y < _board[0].size(); y++)
+        {
+            this->_board[x][y] = Disk();
+        }
+    }
+    _board[3][3].set_color(DiskColor:: WHITE);
+    _board[4][4].set_color(DiskColor:: WHITE);
+    _board[4][3].set_color(DiskColor:: BLACK);
+    _board[3][4].set_color(DiskColor:: BLACK);
+}
+
 std::vector<int> Board::get_valid_points(Player player)
 {
     std::vector<int> legal_points;
@@ -86,5 +103,10 @@ bool Board::check_direction(int x, int y, int direction_x, int direction_y, Disk
             return true;
         }
     }
+}
+
+std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE> &Board::get_board() const
+{
+    return const_cast<std::array<std::array<Disk, SIZE_BOARD_SIDE>, SIZE_BOARD_SIDE>&>(_board);
 }
 

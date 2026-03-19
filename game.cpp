@@ -2,6 +2,15 @@
 #include <iostream>
 #include <limits>
 
+
+Game::Game(Board _board_instance)
+    : _board_instance(_board_instance),
+      _players{ Player("Black", DiskColor::BLACK),
+                Player("White", DiskColor::WHITE) },
+      _current_player(_players[0])
+{
+}
+
 std::pair<int, int> Game::input_point(Player player)
 {
     std::string input;
@@ -81,6 +90,7 @@ char get_char_by_enum(DiskColor disk_color)
     default:
         return '-';
     }
+    return 'F';
 }
 
 void Game::print_board()
@@ -91,7 +101,6 @@ void Game::print_board()
 
     for (int i = 0; i < size; i++)
     {
-
         for (int j = 0; j < size; j++)
         {
             point.first = j;
@@ -109,6 +118,12 @@ void Game::print_board()
         std::cout << std::endl;
     }
 }
+
+void Game::set_board(Board board)
+{
+    this->_board_instance = board;
+}
+
 
 void Game::update_board()
 {

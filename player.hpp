@@ -15,6 +15,8 @@ private:
     DiskColor color;
 
 public:
+
+    Player(std::string name, DiskColor color);
     /**
      * @brief Gets the name of the player
      *

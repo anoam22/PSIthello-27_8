@@ -11,6 +11,7 @@ private:
     DiskColor color;
 
 public:
+    friend class Board;
     /**
      * @brief The constructor of disk
      */
